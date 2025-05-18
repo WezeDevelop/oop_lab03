@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ProgressionApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ProgressionApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ProgressionApp">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+     <StackPanel Margin="20" Spacing="10">
+    <!-- ComboBox для вибору типу прогресії -->
+    <ComboBox SelectedItem="{Binding SelectedType}">
+      <ComboBox.Items>
+        <x:String>Linear</x:String>
+        <x:String>Exponential</x:String>
+      </ComboBox.Items>
+    </ComboBox>
+
+    <!-- Поля вводу -->
+    <TextBlock Text="Перший елемент (a):"/>
+    <TextBox Text="{Binding InputA}"/>
+
+    <TextBlock Text="Крок (d або r):"/>
+    <TextBox Text="{Binding InputStep}"/>
+
+    <TextBlock Text="Номер елемента (j):"/>
+    <TextBox Text="{Binding InputJ}"/>
+
+    <TextBlock Text="Кількість елементів (n):"/>
+    <TextBox Text="{Binding InputN}"/>
+
+    <!-- Кнопка -->
+    <Button Content="Обчислити" Command="{Binding CalculateCommand}"/>
+
+    <!-- Вивід результату -->
+    <TextBlock Text="{Binding Result}" TextWrapping="Wrap" Margin="0,10,0,0"/>
+  </StackPanel>
+
+</Window>
